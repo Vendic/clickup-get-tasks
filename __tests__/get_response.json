@@ -1,0 +1,11 @@
+{
+  "id": "9hx",
+  "custom_id": "TEST123",
+  "name": "Updated Task Name",
+  "text_content": "New Task Description",
+  "description": "New Task Description",
+  "status": {
+    "status": "in progress"
+  },
+  "url": "https://app.clickup.com/t/9hx"
+}

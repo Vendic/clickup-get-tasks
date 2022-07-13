@@ -1,0 +1,30 @@
+{
+    "name": "clickup-get-tasks",
+    "version": "1.1.0",
+    "description": "Github action to fetch tasks from Clickup via the API",
+    "main": "src/main.ts",
+    "scripts": {
+        "build": "tsc",
+        "test": "tsc --noEmit && jest"
+    },
+    "license": "MIT",
+    "keywords": [
+        "github",
+        "actions",
+        "clickup"
+    ],
+    "author": "Tjitse-E",
+    "devDependencies": {
+        "@actions/core": "^1.9",
+        "@actions/github": "^5.0",
+        "@octokit/types": "^6.39",
+        "@types/jest": "^28",
+        "@types/node": "^18",
+        "axios": "^0.27.0",
+        "jest": "^28.0",
+        "js-yaml": "^4.1.0",
+        "nock": "^13.2",
+        "ts-jest": "^28.0",
+        "typescript": "^4.7"
+    }
+}
