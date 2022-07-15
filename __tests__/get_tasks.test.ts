@@ -23,25 +23,13 @@ test('Test get 2 tasks from Clickup API', async () => {
 
     const expected_output = JSON.stringify([
         {
-            "id": "9hx",
             "custom_id": "TEST123",
-            "name": "Updated Task Name",
-            "text_content": "New Task Description",
             "description": "New Task Description",
-            "status": {
-                "status": "in progress",
-            },
             "url": "https://app.clickup.com/t/9hx"
         },
         {
-            "id": "9hx",
             "custom_id": "TEST123",
-            "name": "Updated Task Name",
-            "text_content": "New Task Description",
             "description": "New Task Description",
-            "status": {
-                "status": "in progress",
-            },
             "url": "https://app.clickup.com/t/9hx"
         }
     ]);
@@ -52,6 +40,7 @@ test('Test get 2 tasks from Clickup API', async () => {
 
 beforeEach(() => {
     process.env['INPUT_CLICKUP_TOKEN'] = 'pk_123'
+    process.env['INPUT_RESPONSE_FIELDS'] = 'url\ndescription\ncustom_id'
     process.env['INPUT_CLICKUP_CUSTOM_TASK_IDS'] = 'ABC-185\nDEF-186'
     process.env['INPUT_CLICKUP_TEAM_ID'] = '123'
 })

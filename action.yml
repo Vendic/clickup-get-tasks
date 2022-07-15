@@ -14,6 +14,9 @@ inputs:
     clickup_team_id:
         description: Your clickup team id
         required: true
+    response_fields:
+        description: Fields that are in the response
+        required: false
 outputs:
     clickup_tasks:
         description: JSON object containing the clickup task info

@@ -5,7 +5,8 @@ import {Task} from './types'
 export async function getTask(
     task_id: string,
     team_id: string,
-    token: string
+    token: string,
+    response_fields: string[]
 ): Promise<Task> {
     console.log(task_id, team_id, token)
 
@@ -20,5 +21,17 @@ export async function getTask(
     core.debug(`GET request for ${task_id} output:`)
     core.debug(JSON.stringify(result.data))
 
-    return result.data;
+    let output = result.data
+    if (response_fields.length >= 1) {
+        const keys : string[] = Object.keys(output);
+        const keysToDelete = keys.filter(function(value) {
+            return !response_fields.includes(value);
+        });
+
+        keysToDelete.forEach(function (keyToDelete) {
+            delete output[keyToDelete]
+        });
+    }
+
+    return output;
 }

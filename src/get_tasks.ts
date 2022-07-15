@@ -7,12 +7,13 @@ export default async function get_tasks(): Promise<void> {
         let failed: boolean = false;
         const token: string = core.getInput('clickup_token')
         const task_ids: string[] = core.getMultilineInput('clickup_custom_task_ids')
+        const response_fields: string[] = core.getMultilineInput('response_fields') ?? []
         const team_id: string = core.getInput('clickup_team_id')
         let tasks: Task[] = [];
 
         for (const task_id of task_ids) {
             try {
-                let task = await getTask(task_id, team_id, token);
+                let task = await getTask(task_id, team_id, token, response_fields);
                 tasks.push(task);
             } catch (error: unknown) {
                 if (error instanceof Error) {
@@ -34,3 +35,4 @@ export default async function get_tasks(): Promise<void> {
         core.setFailed(`Action failed: ${error}`)
     }
 }
+

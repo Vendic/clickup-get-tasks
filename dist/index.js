@@ -8160,7 +8160,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getTask = void 0;
 const axios_1 = __importDefault(__nccwpck_require__(6805));
 const core = __importStar(__nccwpck_require__(4181));
-async function getTask(task_id, team_id, token) {
+async function getTask(task_id, team_id, token, response_fields) {
     console.log(task_id, team_id, token);
     const endpoint = `https://api.clickup.com/api/v2/task/${task_id}/?custom_task_ids=true&team_id=${team_id}`;
     const result = await axios_1.default.get(endpoint, {
@@ -8171,7 +8171,17 @@ async function getTask(task_id, team_id, token) {
     });
     core.debug(`GET request for ${task_id} output:`);
     core.debug(JSON.stringify(result.data));
-    return result.data;
+    let output = result.data;
+    if (response_fields.length >= 1) {
+        const keys = Object.keys(output);
+        const keysToDelete = keys.filter(function (value) {
+            return !response_fields.includes(value);
+        });
+        keysToDelete.forEach(function (keyToDelete) {
+            delete output[keyToDelete];
+        });
+    }
+    return output;
 }
 exports.getTask = getTask;
 
@@ -8210,15 +8220,17 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__nccwpck_require__(4181));
 const api_calls_1 = __nccwpck_require__(7443);
 async function get_tasks() {
+    var _a;
     try {
         let failed = false;
         const token = core.getInput('clickup_token');
         const task_ids = core.getMultilineInput('clickup_custom_task_ids');
+        const response_fields = (_a = core.getMultilineInput('response_fields')) !== null && _a !== void 0 ? _a : [];
         const team_id = core.getInput('clickup_team_id');
         let tasks = [];
         for (const task_id of task_ids) {
             try {
-                let task = await (0, api_calls_1.getTask)(task_id, team_id, token);
+                let task = await (0, api_calls_1.getTask)(task_id, team_id, token, response_fields);
                 tasks.push(task);
             }
             catch (error) {
