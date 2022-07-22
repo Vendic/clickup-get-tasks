@@ -8220,17 +8220,25 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__nccwpck_require__(4181));
 const api_calls_1 = __nccwpck_require__(7443);
 async function get_tasks() {
-    var _a;
+    var _a, _b;
     try {
         let failed = false;
         const token = core.getInput('clickup_token');
         const task_ids = core.getMultilineInput('clickup_custom_task_ids');
         const response_fields = (_a = core.getMultilineInput('response_fields')) !== null && _a !== void 0 ? _a : [];
         const team_id = core.getInput('clickup_team_id');
+        const convert_quotes = (_b = core.getBooleanInput('convert_quotes')) !== null && _b !== void 0 ? _b : true;
         let tasks = [];
         for (const task_id of task_ids) {
             try {
                 let task = await (0, api_calls_1.getTask)(task_id, team_id, token, response_fields);
+                if (convert_quotes) {
+                    Object.keys(task).forEach(function (key) {
+                        if (typeof task[key] === 'string') {
+                            task[key] = convertQuotesToHtml(task[key]);
+                        }
+                    });
+                }
                 tasks.push(task);
             }
             catch (error) {
@@ -8252,6 +8260,15 @@ async function get_tasks() {
     }
 }
 exports["default"] = get_tasks;
+/**
+ * @description convert single and double quotes to html characters
+ * @param string
+ */
+function convertQuotesToHtml(string) {
+    string = string.replace(/"/g, "&quot;");
+    string = string.replace(/'/g, "&#39;");
+    return string;
+}
 
 
 /***/ }),

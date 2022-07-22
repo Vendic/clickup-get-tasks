@@ -24,12 +24,12 @@ test('Test get 2 tasks from Clickup API', async () => {
     const expected_output = JSON.stringify([
         {
             "custom_id": "TEST123",
-            "description": "New Task Description",
+            "description": "Price isn&#39;t correct &quot;displayed&quot; in the rich snippets",
             "url": "https://app.clickup.com/t/9hx"
         },
         {
             "custom_id": "TEST123",
-            "description": "New Task Description",
+            "description": "Price isn&#39;t correct &quot;displayed&quot; in the rich snippets",
             "url": "https://app.clickup.com/t/9hx"
         }
     ]);
@@ -43,4 +43,5 @@ beforeEach(() => {
     process.env['INPUT_RESPONSE_FIELDS'] = 'url\ndescription\ncustom_id'
     process.env['INPUT_CLICKUP_CUSTOM_TASK_IDS'] = 'ABC-185\nDEF-186'
     process.env['INPUT_CLICKUP_TEAM_ID'] = '123'
+    process.env['INPUT_CONVERT_QUOTES'] = 'true'
 })

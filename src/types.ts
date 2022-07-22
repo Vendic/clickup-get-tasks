@@ -1,3 +1,5 @@
 export type Task = {
-    url: string
+    url : string,
+    description: string,
+    custom_id: string
 }

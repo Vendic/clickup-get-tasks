@@ -17,6 +17,10 @@ inputs:
     response_fields:
         description: Fields that are in the response
         required: false
+  convert_quotes:
+        description: Convert single and double quotes to html
+        required: false
+        default: true
 outputs:
     clickup_tasks:
         description: JSON object containing the clickup task info

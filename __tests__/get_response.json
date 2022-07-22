@@ -3,7 +3,7 @@
   "custom_id": "TEST123",
   "name": "Updated Task Name",
   "text_content": "New Task Description",
-  "description": "New Task Description",
+  "description": "Price isn't correct \"displayed\" in the rich snippets",
   "status": {
     "status": "in progress"
   },
