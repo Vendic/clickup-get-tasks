@@ -1,0 +1,7 @@
+### Invoices
+# @no-cookie-jar
+GET {{host}}/api/v2/task/PIPE-221?custom_task_ids=true&team_id={{team_id}}
+Authorization: {{clickup_api_token}}
+User-Agent: vendic-clickup-get-tasks
+Accept: {{accept}}
+1

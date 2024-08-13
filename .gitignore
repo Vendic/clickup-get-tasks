@@ -2,3 +2,4 @@ node_modules
 .idea
 *~
 real_user_mapping.json
+*.private.env.json

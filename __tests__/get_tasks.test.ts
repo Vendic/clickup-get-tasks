@@ -25,11 +25,23 @@ test('Test get 2 tasks from Clickup API', async () => {
         {
             "custom_id": "TEST123",
             "description": "Price isn&#39;t correct &quot;displayed&quot; in the rich snippets",
+            "priority": {
+                "color": "#d8d8d8",
+                "id": "4",
+                "orderindex": "4",
+                "priority": "low"
+            },
             "url": "https://app.clickup.com/t/9hx"
         },
         {
             "custom_id": "TEST123",
             "description": "Price isn&#39;t correct &quot;displayed&quot; in the rich snippets",
+            "priority": {
+                "color": "#d8d8d8",
+                "id": "4",
+                "orderindex": "4",
+                "priority": "low"
+            },
             "url": "https://app.clickup.com/t/9hx"
         }
     ]);
@@ -40,7 +52,7 @@ test('Test get 2 tasks from Clickup API', async () => {
 
 beforeEach(() => {
     process.env['INPUT_CLICKUP_TOKEN'] = 'pk_123'
-    process.env['INPUT_RESPONSE_FIELDS'] = 'url\ndescription\ncustom_id'
+    process.env['INPUT_RESPONSE_FIELDS'] = 'url\ndescription\ncustom_id\npriority'
     process.env['INPUT_CLICKUP_CUSTOM_TASK_IDS'] = 'ABC-185\nDEF-186'
     process.env['INPUT_CLICKUP_TEAM_ID'] = '123'
     process.env['INPUT_CONVERT_QUOTES'] = 'true'

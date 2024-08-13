@@ -7,5 +7,11 @@
   "status": {
     "status": "in progress"
   },
+  "priority": {
+    "color": "#d8d8d8",
+    "id": "4",
+    "orderindex": "4",
+    "priority": "low"
+  },
   "url": "https://app.clickup.com/t/9hx"
 }
