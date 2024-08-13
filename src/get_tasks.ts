@@ -18,8 +18,9 @@ export default async function get_tasks(): Promise<void> {
 
                 if (convert_quotes) {
                     Object.keys(task).forEach(function (key : string) {
-                        if (typeof task[key as keyof Task] === 'string') {
-                            task[key as keyof Task] = convertQuotesToHtml(task[key as keyof Task]);
+                        const value = task[key as keyof Task];
+                        if (typeof value === 'string') {
+                            task[key as keyof Task] = convertQuotesToHtml(value) as any;
                         }
                     });
                 }
