@@ -2,7 +2,7 @@ name: 'clickup-get-tasks'
 description: 'Github action to fetch tasks from Clickup via the API'
 author: 'Tjitse-E'
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'dist/index.js'
 inputs:
   clickup_token:
