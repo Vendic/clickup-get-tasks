@@ -24,3 +24,5 @@ inputs:
 outputs:
   clickup_tasks:
     description: JSON object containing the clickup task info
+  invalid_tasks:
+    description: JSON object containing the clickup tasks that could not be found
